@@ -1,14 +1,15 @@
 'use strict';
 
-function Review(ID, author, comment, rating = {service: 5, price: 5, value: 5, quality: 5}) {
-    this.ID = ID;
+
+function Review(author, comment, rating = {service: 5, price: 5, value: 5, quality: 5}) {
+    this.ID = -1;
     this.author = author;
     this.date = new Date();
     this.comment = comment;
     this.rating = rating;
 }
 
-function Product(ID, name, price, brand, activeSize) {
+function Product(ID, name = '', price, brand, activeSize) {
 
     this.ID = ID;
     this.name = name;
@@ -47,6 +48,7 @@ function Product(ID, name, price, brand, activeSize) {
     }
 
     this.addReview = function (review) {
+        review.ID = this.reviewID++;
         this.reviews.push(review)
     }
 
@@ -141,10 +143,96 @@ function Product(ID, name, price, brand, activeSize) {
     }
 }
 
-let myProduct = new Product(52162, "Sam", 52.3, 'L');
-let myProduct2 = Object.create(new Product());
-console.log(myProduct2)
-console.log(myProduct.getID())
-myProduct.setID(1234)
-console.log(myProduct.getID())
+function searchProducts(products = [new Product()], search = '') {
+    search = search.toLowerCase();
+    let extSrch = false;
+    let result = [];
+
+    if (search.at(-1) === '*') {
+        extSrch = true;
+        search = search.slice(0, -1);
+    }
+
+    for (let product of products) {
+        let nameIndx = product.name.toLowerCase().search(search);
+        let descIndx = product.description.toLowerCase().search(search);
+
+        if (nameIndx !== -1) {
+            if (extSrch) {
+                result.push(product);
+            } else if (product.name[nameIndx + search.length] === ' ' || nameIndx + search.length === product.name.length) {
+                result.push(product);
+            }
+        } else if (descIndx !== -1) {
+            if (extSrch) {
+                result.push(product);
+            } else if (product.description[descIndx + search.length] === ' ' || descIndx + search.length === product.description.length) {
+                result.push(product);
+            }
+        }
+    }
+    return result;
+}
+
+function sortProducts(products = [new Product()], sortRule = 'ID') {
+    let sorted = [];
+    if (sortRule === 'name'){
+        let names = [];
+        for (let product of products){
+            names.push(product.name)
+        }
+        names.sort()
+        for (let name of names){
+            for (let product of products){
+                if (name === product.name){
+                    sorted.push(product);
+                    break;
+                }
+            }
+        }
+        products = sorted;
+    } else {
+        products.sort((a,b) => a[sortRule] - b[sortRule])
+    }
+
+    return products;
+}
+
+let product = new Product(0, "Футболка", 52.3, 'Nike', 'L');
+let product1 = new Product(10, "Майка", 42.4, 'Adidas');
+let product2 = new Product(2, "Бутси", 162.0, 'Puma');
+let product3 = new Product(3, "Кед", 72.7, 'Umbro');
+
+product.setDescription('Спортивна утболка бренда Nike');
+product1.setDescription('Спортивна майка бренда Adidas');
+product2.setDescription('Футболні бутси Puma');
+product3.setDescription('Стильні кеди Umbro');
+
+let products = searchProducts([product, product1, product2, product3], 'спорти');
+
+let products2 = sortProducts([product3, product, product1, product2], 'price');
+
+
+for (let product of products2) {
+    console.log(product.price);
+}
+
+product.addReview(new Review("Sam", "All fine", {service: 5, price: 2, value: 3, quality: 4}));
+product.addReview(new Review("Man", "Bad", {service: 1, price: 1, value: 1, quality: 1}));
+// console.log(product.getAverageRating())
+// console.log(product.getReviewByID(0))
+
+product.setImages(["2", "54", '41'])
+// console.log(product.getImages())
+// console.log(product.getImage(2))
+product.addSize('XXS')
+// console.log(product.getSizes())
+product.deleteSize(4)
+// console.log(product.getSizes())
+product.deleteReview(0)
+// console.log(product.getReviews())
+
+
+
+
 
