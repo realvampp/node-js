@@ -213,6 +213,7 @@ let products = searchProducts([product, product1, product2, product3], 'спор
 let products2 = sortProducts([product3, product, product1, product2], 'price');
 
 
+
 for (let product of products2) {
     console.log(product.price);
 }
