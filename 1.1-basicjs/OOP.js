@@ -347,4 +347,4 @@ let moika = new Electronics({
 })
 moika.getterSetter('set', 'price', 425)
 console.log(moika.getterSetter('get', 'price'))
-
+ sd
