@@ -93,9 +93,6 @@ function Product(ID, name = '', price, brand, activeSize) {
     this.getActiveSize = function () {
         return this.activeSize;
     }
-    this.getActiveSize = function () {
-        return this.activeSize;
-    }
     this.getQuantity = function () {
         return this.quantity;
     }
