@@ -31,6 +31,8 @@ function outputHttpResponse(statusCode, statusMessage, headers, body) {
 function processHttpRequest($method, $uri, $headers, $body) {
     // ... проаналізувати вхідні дані, обчислити результат
     // та спеціальною командою красиво вивести відповідь
+
+
     let statusCode = 200;
     let statusMessage = "OK"
     let headers = {
@@ -41,6 +43,35 @@ function processHttpRequest($method, $uri, $headers, $body) {
         'Content-Type': 'text/html; charset=utf-8',
     }
     let body;
+    if ('POST' === $method) {
+        if ($uri !== '/api/checkLoginAndPassword') {
+            statusCode = 400
+            statusMessage = 'Bad Request'
+            body = 'bad request'
+            headers['Content-Length'] = body.length
+            outputHttpResponse(statusCode, statusMessage, headers, body);
+            return;
+        }
+        let db = require('fs').readFileSync('passwords.txt', 'UTF-8', (err, data) => {
+            if (err) {
+                console.error('Помилка читання файлу:', err);
+            }
+        });
+        db = db.split('\r\n')
+            .reduce((obj, currVal) =>{
+                let arr = currVal.split(':')
+                obj[`${arr[0]}`] = arr[1]
+                return obj
+                },{})
+        let login = $body.match(/(?<=login=)\w+/)
+        let password = $body.match(/(?<=password=)\w+/)
+        if (db[login] == password){
+            body = '<h1 style="color:green">FOUND</h1>'
+        }
+        headers["Content-Length"] = body.length
+        outputHttpResponse(statusCode, statusMessage, headers, body);
+        return;
+    }
     if (!(/GET/.test($method) && /(\?nums=)/.test($uri))) {
         statusCode = 400;
         statusMessage = 'Bad Request'
@@ -65,6 +96,7 @@ function processHttpRequest($method, $uri, $headers, $body) {
     headers['Content-Length'] = body.length
     outputHttpResponse(statusCode, statusMessage, headers, body);
 }
+
 
 function parseTcpStringAsHttpRequest($string) {
     let lines = $string.split('\n');
