@@ -45,13 +45,13 @@ class Cat{
 
     }
 }
-function hey(abstractPet) {
-    return "hey! i'm " + abstractPet.name();
-}
-let a = new Cat("myavchik", true)
-let b = new Dog("gavchik", 333)
-hey(a)
-hey(b)
+// function hey(abstractPet) {
+//     return "hey! i'm " + abstractPet.name();
+// }
+// let a = new Cat("myavchik", true)
+// let b = new Dog("gavchik", 333)
+// hey(a)
+// hey(b)
 
 // // 4.3
 //
