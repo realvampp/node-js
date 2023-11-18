@@ -1,0 +1,13 @@
+{
+  "name": "2.2-event",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf ./dist && tsc",
+    "start": "node dist/test-node-fetch.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

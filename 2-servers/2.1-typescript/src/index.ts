@@ -1,4 +1,4 @@
-//console.log('hi')
+console.log('hi')
 // 1.
 
 function getFirstWord(a:string) {
@@ -38,42 +38,59 @@ interface HasName {
 
 // 4.2
 
-class Cat{
-
-
-    constructor(public name: string, public hasTail: boolean) {
-
-    }
-}
-// function hey(abstractPet) {
+// class AbstractPet{
+//     constructor(public _name: string) {
+//     }
+//     name(){
+//         return this._name
+//     }
+// }
+// class Cat extends AbstractPet{
+//     constructor(_name: string, public hasTail: boolean) {
+//         super(_name);
+//     }
+//
+// }
+// class Dog extends AbstractPet{
+//     constructor(_name: string, public id: number) {
+//         super(_name);
+//     }
+// }
+// function hey(abstractPet: AbstractPet) {
 //     return "hey! i'm " + abstractPet.name();
 // }
 // let a = new Cat("myavchik", true)
 // let b = new Dog("gavchik", 333)
-// hey(a)
-// hey(b)
+// console.log(hey(a))
+// console.log(hey(b))
 
 // // 4.3
-//
-// function hey(a) {
+// interface HasAnimal{
+//     name: () => string;
+//     type: string
+//     cuteness?: number;
+//     coolness?: number
+// }
+// function hey(a: HasAnimal) {
 //     return "hey! i'm " + a.name()
 //         + (a.type === "cat" ? ("cuteness: "+a.cuteness) : ("coolness: "+a.coolness))
 // }
-// hey({name: () => "roma", type: "cat", cuteness: 100})
-// hey({name: () => "vasya", type: "dog", coolness: 100})
-//
+// console.log(hey({name: () => "roma", type: "cat", cuteness: 100}))
+// console.log(hey({name: () => "vasya", type: "dog", coolness: 100}))
+
 // // 5.
 //
 // // google for Record type
-// function stringEntries(a) {
+// type ArrOrObj = [] | {}
+// function stringEntries(a: ArrOrObj) {
 //     return Array.isArray(a) ? a : Object.keys(a)
 // }
-//
-// // 6.
-//
-// // you don't know Promises and async/await yet. Or do you?
-// // ....can be hard, don't worry and SKIP if you do not know how to do it
-//
+
+// 6.
+
+// you don't know Promises and async/await yet. Or do you?
+// ....can be hard, don't worry and SKIP if you do not know how to do it
+
 // async function world(a) {
 //     return "*".repeat(a)
 // }
