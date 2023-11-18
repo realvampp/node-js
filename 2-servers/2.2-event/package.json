@@ -9,5 +9,8 @@
     "start": "node dist/test-node-fetch.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
 }
