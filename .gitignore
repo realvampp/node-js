@@ -17,3 +17,14 @@ resume/realvampp.github.io/
 2-servers/2.3-http-udp-tcp-servers/node_modules
 2-servers/2.3-http-udp-tcp-servers/.idea
 2-servers/2.3-http-udp-tcp-servers/http-test.js
+2-servers/2.4-rest-mongodb/package-lock.json
+2-servers/2.4-rest-mongodb/node_modules
+2-servers/2.4-rest-mongodb/src/testin.ts
+1.4-front-end/.idea/1.4-front-end.iml
+1.4-front-end/.idea/modules.xml
+1.4-front-end/.idea/vcs.xml
+2-servers/2.4-rest-mongodb/plan.txt
+2-servers/2.4-rest-mongodb/dist
+2-servers/2.4-rest-mongodb/sessions
+2-servers/2.4-rest-mongodb/users.json
+2-servers/2.4-rest-mongodb/index_old.html
