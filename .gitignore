@@ -28,3 +28,8 @@ resume/realvampp.github.io/
 2-servers/2.4-rest-mongodb/sessions
 2-servers/2.4-rest-mongodb/users.json
 2-servers/2.4-rest-mongodb/index_old.html
+3-architecture/3.1-ts2/.idea
+3-architecture/3.1-ts2/node_modules
+3-architecture/3.1-ts2/dist
+3-architecture/3.1-ts2/src/test.ts
+3-architecture/3.1-ts2/package-lock.json
