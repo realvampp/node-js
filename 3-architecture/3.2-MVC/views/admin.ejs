@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Бібліотека Ш++ header</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="library Sh++">
+    <link rel="stylesheet" href="/static/styles/libs.min.css">
+    <link rel="stylesheet" href="/static/styles/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+          crossorigin="anonymous"/>
+    <link rel="shortcut icon" href="/static/img/favicon.ico">
+</head>
+<body data-gr-c-s-loaded="true" class="">
+<section id="header" class="header-wrapper">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="col-xs-5 col-sm-2 col-md-2 col-lg-2">
+                <div class="logo"><a href="/" class="navbar-brand"><span class="sh">Ш</span><span
+                                class="plus">++</span></a></div>
+            </div>
+            <div class="col-xs-12 col-sm-7 col-md-8 col-lg-8">
+                <div class="main-menu">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="adminka">
+                            <%= topName %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-3 col-md-2 col-lg-2 hidden-xs">
+                <div class="social">
+                    <a id="logout" href="/auth">Выход</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+<section id="main" class="main-wrapper">
+    <div class="container">
+        <div id="content" class="admin col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th>Название книги</th>
+                                <th>Авторы</th>
+                                <th>Год</th>
+                                <th>Действия</th>
+                                <th>Клик</th>
+                            </tr>
+                            </thead>
+                            <tbody id="table_content">
+                            </tbody>
+                        </table>
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item pag_previous">
+                                    <a class="page-link" href="#" aria-label="Previous" data-page-number="">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+
+                                <li class="page-item pag_next">
+                                    <a class="page-link" href="#" aria-label="Next" data-page-number="">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+            <script id="pagination_pattern" type="text/template">
+                <li class="page-item {to-remove}"><a class="page-link{active}" data-page-number="{page}" href="#">{page}</a></li>
+            </script>
+            <div class="col-md-6">
+                <form id="addBook" class="row card" enctype="multipart/form-data">
+                    <div class="card-body">
+                        <div class="row">
+                            <h6>Добавить новую книгу</h6>
+                            <div class="col-md-7">
+                                <input name="name" class="form-control" type="text" placeholder="Название книги">
+                                <input name="year" class="form-control" type="text" placeholder="Год издания">
+                                <input name="pict" class="form-control" accept="image/*" type="file" placeholder="Загрузите картинку">
+                                <img id="imagePreview" class="rounded" src="#" alt="">
+                            </div>
+                            <div class="col-md-5">
+                                <input name="author" class="form-control" type="text" placeholder="Автор1">
+                                <input name="author" class="form-control" type="text" placeholder="Автор2">
+                                <input name="author" class="form-control" type="text" placeholder="Автор3">
+                                <textarea name="descr" class="form-control" rows="3"
+                                          placeholder="Введите описание"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block" >Добавить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<script id="table_pattern" type="text/template">
+    <tr class="book_list_row" data-book-id="{id}">
+        <td><div class="title"><img src="/static/img/books/{id}.jpg" alt="book">{title}</div></td>
+        <td><div class="author">{author}</div></td>
+        <td>{year}</td>
+        <td><a class="deleteBook" href="{id}">удалить</a></td>
+        <td>{clicks}</td>
+    </tr>
+</script>
+<%- include('partials/footer') %>

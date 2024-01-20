@@ -1,0 +1,1 @@
+UPDATE books SET bookWants = bookWants + 1 WHERE book_id = ?;

@@ -1,0 +1,1 @@
+SELECT COUNT(book_id) as amount FROM books WHERE status = 'active';

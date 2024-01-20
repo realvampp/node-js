@@ -1,0 +1,1 @@
+To start this project you should install all dependencies and launch 'npm run start'.

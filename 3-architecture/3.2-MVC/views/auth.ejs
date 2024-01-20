@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Бібліотека Ш++ header</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="library Sh++">
+    <link rel="stylesheet" href="/static/styles/libs.min.css">
+    <link rel="stylesheet" href="/static/styles/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+          crossorigin="anonymous"/>
+    <link rel="shortcut icon" href="/static/img/favicon.ico">
+</head>
+<body data-gr-c-s-loaded="true" class="">
+<section id="header" class="header-wrapper">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="col-xs-5 col-sm-2 col-md-2 col-lg-2">
+                <div class="logo"><a href="/" class="navbar-brand"><span class="sh">Ш</span><span
+                                class="plus">++</span></a></div>
+            </div>
+            <div class="col-xs-12 col-sm-7 col-md-8 col-lg-8">
+                <div class="main-menu">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="adminka">
+                            <%= topName%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-3 col-md-2 col-lg-2 hidden-xs">
+                <div class="social">
+                    <a href="https://www.facebook.com/shpp.kr/" class="link-underline link-underline-opacity-0" target="_blank">
+                        <span class="fa-stack fa-sm"><i class="fa fa-facebook fa-stack-1x"></i></span>
+                    </a>
+                    <a href="http://programming.kr.ua/ru/courses#faq" class="link-underline link-underline-opacity-0" target="_blank">
+                        <span class="fa-stack fa-sm"><i class="fa fa-book fa-stack-1x"></i></span>
+                    </a>
+                    <a href="/auth" class="link-underline link-underline-opacity-0" target="_self">
+                        <span class="fa-stack fa-sm"><i class="fa fa-wheelchair-alt fa-stack-1x"></i></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section id="main" class="main-wrapper">
+    <div class="container">
+        <div class="col-md-4 col-md-offset-4">
+            <form id="auth" class="well">
+                <div class="form-group">
+                    <label>Логин</label>
+                    <input class="form-control" type="text" name="login" placeholder="Введите логин" aria-label="пример ввода по умолчанию">
+                </div>
+                <div class="form-group">
+                    <label>Пароль</label>
+                    <input class="form-control" type="text" name="pass" placeholder="Введите пароль" aria-label="пример ввода по умолчанию">
+                </div>
+                <button type="submit" class="btn btn-success btn-block">Login</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+<%- include('partials/footer') %>
