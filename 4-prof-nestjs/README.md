@@ -5,22 +5,27 @@
 ## Installation
 
 ```bash
-$ npm install
+# copy .env file and install all dependencies
+$ make pre-install
+
+# up docker container
+$ make docker-up
+
+# run database migrations
+$ npm run migration:run
+
+# seed database
+$ npm run seed:run
 ```
 
 ## Running the app
 
-You need to define your `.env` file before. To see variables you need check `db/data-source.ts` and `s3.service.ts`
-where you should find it like `process.env.*`<br>
 Now you can run following commands and go to the http://localhost:3000/api/swagger.
 
 ```bash
-# development
-$ npm run start
+# run the docker containers with MySQL and Adminer
+$ make docker-up
 
 # watch mode
 $ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```

@@ -1,0 +1,28 @@
+version: '3'
+
+services :
+  mysql:
+    container_name: starwars.mysql
+    image: mysql:8.0
+    env_file: ../.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DEFAULT_AUTHENTICATION_PLUGIN=caching_sha2_password
+    ports:
+      - 3366:3306
+    volumes:
+      - swapi-mysql:/var/lib/mysql
+    restart: always
+
+  adminer:
+    container_name: starwars.adminer
+    image: adminer
+    restart: always
+    links:
+      - mysql
+    ports:
+      - 8080:8080
+
+volumes:
+  swapi-mysql:
+    driver: local
