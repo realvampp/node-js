@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common'
+import { APP_GUARD } from '@nestjs/core'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { ConfigModule } from '@nestjs/config'
 import { PeopleModule } from './people/people.module'
@@ -12,7 +13,6 @@ import { ImagesModule } from './images/images.module'
 import { AuthModule } from './auth/auth.module'
 import { UserModule } from './user/user.module'
 import { JwtStrategy } from './auth/jwt.strategy'
-import { APP_GUARD } from '@nestjs/core'
 import { JwtGuard } from './auth/jwt.guard'
 
 @Module({

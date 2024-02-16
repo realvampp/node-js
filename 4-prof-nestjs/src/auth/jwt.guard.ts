@@ -8,6 +8,7 @@ import { Reflector } from '@nestjs/core'
 import { AuthGuard } from '@nestjs/passport'
 import { Observable } from 'rxjs'
 import { ApiBearerAuth } from '@nestjs/swagger'
+import {User} from "../user/entities/user.entity";
 
 @Injectable()
 @ApiBearerAuth()
@@ -27,9 +28,9 @@ export class JwtGuard extends AuthGuard('jwt') {
     return super.canActivate(context)
   }
 
-  handleRequest<User>(
+  handleRequest<TUser extends User>(
     err: Error | null,
-    user: User,
+    user: TUser,
     info: any,
     context: ExecutionContext,
   ) {
@@ -42,7 +43,6 @@ export class JwtGuard extends AuthGuard('jwt') {
       context.getClass(),
     ])
 
-    // @ts-ignore
     if (needAdmin && !user.isAdmin)
       throw new ForbiddenException('You are not an admin')
     else return user

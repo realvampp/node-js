@@ -12,12 +12,12 @@ import {
   ValidationPipe,
   BadRequestException,
 } from '@nestjs/common'
-import { PlanetsService } from './planets.service'
-import { CreatePlanetDto } from './dto/create-planet.dto'
-import { UpdatePlanetDto } from './dto/update-planet.dto'
 import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger'
 import { Request } from 'express'
 import { createUrlByIdAndClass, getPrevNext } from '../utils'
+import { PlanetsService } from './planets.service'
+import { CreatePlanetDto } from './dto/create-planet.dto'
+import { UpdatePlanetDto } from './dto/update-planet.dto'
 import { PaginatedResultDto } from '../interceptors/handle-response/paginated-result.dto'
 import { NeedAdmin } from '../auth/decorators/needAdmin.decorator'
 
@@ -33,13 +33,13 @@ export class PlanetsController {
   async findOne(@Param('id') id: string) {
     let url = createUrlByIdAndClass('planets', id)
 
-    return await this.planetsService.findOne(url)
+    return this.planetsService.findOne(url)
   }
 
   @Post()
   @UsePipes(new ValidationPipe())
   async create(@Body() createPlanetDto: CreatePlanetDto) {
-    return await this.planetsService.create(createPlanetDto)
+    return this.planetsService.create(createPlanetDto)
   }
 
   @NeedAdmin(false)
@@ -74,6 +74,6 @@ export class PlanetsController {
   async remove(@Param('id') id: string) {
     let url = createUrlByIdAndClass('planets', id)
 
-    return await this.planetsService.remove(url)
+    return this.planetsService.remove(url)
   }
 }
